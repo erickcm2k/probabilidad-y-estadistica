@@ -3,15 +3,15 @@
 #include <time.h>
 #include <string.h>
 
+// Determinar que sistema operativo usa quien compile la aplicación.
 #ifdef _WIN32
-#define SO "windows"
-#else
-#define SO "linux-mac"
+#define SO "windows" // Windows
+#else 
+#define SO "unix" // Sistemas basados en UNIX como Linux o MacOS
 #endif
 
 void esperar()
 {
-    printf("Sistema usado es: %s", SO);
     if (strcmp(SO, "windows") == 0)
     {
         system("pause");
@@ -24,7 +24,6 @@ void esperar()
 
 void limpiarPantalla()
 {
-    printf("Sistema usado es: %s", SO);
     if (strcmp(SO, "windows") == 0)
     {
         system("cls");
@@ -40,7 +39,7 @@ void limpiarPantalla()
 * Función auxiliar para la función "imprimirTabla".
 *
 */
-int lanzamientoDato()
+int lanzarDado()
 {
     const int limInf = 1;
     const int limSup = 6;
@@ -60,8 +59,8 @@ void imprimirTabla(int numLanzamientos)
     // Se genera la tabla.
     for (int i = 0; i < numLanzamientos; i++)
     {
-        int dado1 = lanzamientoDato();
-        int dado2 = lanzamientoDato();
+        int dado1 = lanzarDado();
+        int dado2 = lanzarDado();
         int sumaDados = dado1 + dado2;
         frecuencia[sumaDados - 2]++;
     }
@@ -79,7 +78,7 @@ void imprimirTabla(int numLanzamientos)
         printf("%2d %7d %18.5f\n", numeroDelDado, frec, frecRelativa);
     }
     printf("-----------------------------------------\n");
-    printf("Total: %11d %7.2f", numLanzamientos, sumaFrecuenciasRelativas);
+    printf("Total: %11d %7.2f\n\n", numLanzamientos, sumaFrecuenciasRelativas);
 }
 
 int main()
@@ -99,7 +98,6 @@ int main()
 
         imprimirTabla(numLanzamientos);
     }
-
     esperar();
     limpiarPantalla();
 
