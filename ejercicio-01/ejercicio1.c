@@ -1,12 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
 #ifdef _WIN32
-#define CLEAR "cls"
+#define SO "windows"
 #else
-#define CLEAR "clear"
+#define SO "linux-mac"
 #endif
+
+void esperar()
+{
+    printf("Sistema usado es: %s", SO);
+    if (strcmp(SO, "windows") == 0)
+    {
+        system("pause");
+    }
+    else
+    {
+        system("read -n 1 -s -p \"Presione cualquier tecla para salir...\"");
+    }
+}
+
+void limpiarPantalla()
+{
+    printf("Sistema usado es: %s", SO);
+    if (strcmp(SO, "windows") == 0)
+    {
+        system("cls");
+    }
+    else
+    {
+        system("clear");
+    }
+}
 
 /*
 *
@@ -72,11 +99,9 @@ int main()
 
         imprimirTabla(numLanzamientos);
     }
-    printf("Presione enter para salir.\n");
-    while (getchar() != 27)
-        ;
 
-    system(CLEAR);
+    esperar();
+    limpiarPantalla();
 
     return 0;
 }
