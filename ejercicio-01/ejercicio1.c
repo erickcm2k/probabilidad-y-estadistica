@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include <time.h>
 
+#ifdef _WIN32
+#define CLEAR "cls"
+#else
+#define CLEAR "clear"
+#endif
+
 /*
 *
 * Función auxiliar para la función "imprimirTabla".
@@ -12,9 +18,7 @@ int lanzamientoDato()
     const int limInf = 1;
     const int limSup = 6;
 
-    int semilla = rand();
-    int aleatorio = semilla % (limSup - limInf + 1) + limInf;
-    return aleatorio;
+    return rand() % (limSup - limInf + 1) + limInf;
 }
 
 /*
@@ -59,8 +63,20 @@ int main()
     printf("Ingrese la cantidad de lanzamientos: ");
     scanf("%d", &numLanzamientos);
     printf("Calculando para %d lanzamientos...\n\n", numLanzamientos);
+    if (numLanzamientos <= 0)
+    {
+        printf("Digite un numero mayor a cero.\n");
+    }
+    else
+    {
 
-    imprimirTabla(numLanzamientos);
+        imprimirTabla(numLanzamientos);
+    }
+    printf("Presione enter para salir.\n");
+    while (getchar() != 27)
+        ;
+
+    system(CLEAR);
 
     return 0;
 }
