@@ -1,3 +1,7 @@
+// Maestro: Ceballos Sebastián Ricardo
+// Castañeda Martínez Erick - 2CM14
+// Probabilidad y estadística
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
