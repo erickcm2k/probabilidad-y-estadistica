@@ -2,7 +2,6 @@
 // Castañeda Martínez Erick - 2CM14
 // Probabilidad y estadística
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -11,7 +10,7 @@
 // Determinar que sistema operativo usa quien compile la aplicación.
 #ifdef _WIN32
 #define SO "windows" // Windows
-#else 
+#else
 #define SO "unix" // Sistemas basados en UNIX como Linux o MacOS
 #endif
 
@@ -59,6 +58,17 @@ int lanzarDado()
 */
 void imprimirTabla(int numLanzamientos)
 {
+    float probabilidadTeorica[11] = {0.027777777,
+                                     0.055555555,
+                                     0.0833333333,
+                                     0.1111111111,
+                                     0.1388888888,
+                                     0.1666666666,
+                                     0.1388888888,
+                                     0.1111111111,
+                                     0.0833333333,
+                                     0.055555555,
+                                     0.027777777};
     int frecuencia[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; //2,3,4,5,6,7,8,9,10,11,12
     // Construimos un arreglo con los valores de cada uno de los lanzamientos.
     // Se genera la tabla.
@@ -71,7 +81,7 @@ void imprimirTabla(int numLanzamientos)
     }
 
     // Imprimimos la tabla
-    printf("Valor    Frecuencia   Frecuencia relativa\n");
+    printf("Valor    Frecuencia   Frecuencia relativa      Probabilidad teorica\n");
     printf("-----------------------------------------\n");
     float sumaFrecuenciasRelativas = 0;
     for (int i = 0; i < 11; i++)
@@ -79,8 +89,9 @@ void imprimirTabla(int numLanzamientos)
         int numeroDelDado = i + 2;
         int frec = frecuencia[i];
         float frecRelativa = (float)frecuencia[i] / (float)numLanzamientos;
+        float pt = probabilidadTeorica[i];
         sumaFrecuenciasRelativas += frecRelativa;
-        printf("%2d %7d %18.5f\n", numeroDelDado, frec, frecRelativa);
+        printf("%2d %7d %18.5f %22.5f\n", numeroDelDado, frec, frecRelativa, pt);
     }
     printf("-----------------------------------------\n");
     printf("Total: %11d %7.2f\n\n", numLanzamientos, sumaFrecuenciasRelativas);

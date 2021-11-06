@@ -79,7 +79,9 @@ int ganaPrimerLanzamiento()
     int dado1 = lanzarDado();
     int dado2 = lanzarDado();
     int suma = dado1 + dado2;
-    printf("La suma de los dados en su primer tiro es: %d.\n", suma);
+    printf("El valor del primer dado es  ---> %d.\n", dado1);
+    printf("El valor del segundo dado es ---> %d.\n", dado2);
+    printf("La suma de los dados es igual a: %d.\n", suma);
     switch (suma)
     {
     case 2:
@@ -158,8 +160,15 @@ int rondaCraps(saldoBanco)
         do
         {
             esperar("Presione cualquier tecla para volver a tirar los dados.");
-            resultado = lanzarDado() + lanzarDado();
-            printf("La suma de los dados es: %d.\n", resultado);
+            // resultado = lanzarDado() + lanzarDado();
+            // printf("La suma de los dados es: %d.\n", resultado);
+            int dado1 = lanzarDado();
+            int dado2 = lanzarDado();
+            resultado = dado1 + dado2;
+
+            printf("El valor del dado 1 es ---> %d.\n", dado1);
+            printf("El valor del dado 2 es ---> %d.\n", dado2);
+            printf("La suma de los dados es igual a: %d.\n", resultado);
             printf("Su punto es %d.\n", punto);
 
             if (resultado == punto)
